@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -36,6 +39,12 @@ class Product
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -173,5 +182,16 @@ class Product
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function setPictureFile(File $picture = null):Product
+    {
+        $this->pictureFile = $picture;
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 }

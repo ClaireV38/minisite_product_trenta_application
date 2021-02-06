@@ -32,7 +32,7 @@ class ProductFixtures extends Fixture
                 $product->setTitle($faker->sentence($nbWords = 3, $variableNbWords = true));
                 $product->setCategory($this->getReference('category_' . $i));
                 $product->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 500));
-                $product->setPicture(categoryFIXTURES::CATEGORIES[$i - 1] . rand ( 1 , 10));
+                $product->setPicture(categoryFIXTURES::CATEGORIES[$i - 1] . rand ( 1 , 10) . '.jpg');
                 $product->setAvailableSize($faker->bothify('#?,#?,#?'));
                 $product->setAvailableColor($faker->sentence($nbWords = 4, $variableNbWords = true));
                 $product->setDescription($faker->text($maxNbChars = 200));
