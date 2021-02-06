@@ -33,9 +33,11 @@
             </ul>
         </div>
     </nav>
+    <main>
         {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+    </main>
     </body>
 </html>
