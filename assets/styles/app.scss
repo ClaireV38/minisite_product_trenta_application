@@ -44,6 +44,13 @@ a:hover {
     margin: auto;
 }
 
+.filter-form {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0.5em;
+    border-radius: 6px;
+}
+
 /* product detail */
 .product-detail {
     width: 100%;

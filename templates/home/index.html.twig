@@ -3,7 +3,13 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <section>
+    <section class="d-flex flex-row">
+        <div class="filter-form bg-light h-100 p-2 p-md-5 m-1 mt-2 text-center">
+        {{ form_start(form) }}
+        {{ form_row(form.category, {'label': 'Filtrer :'})}}
+        <button class="btn btn-primary">Appliquer</button>
+        {{ form_end(form) }}
+        </div>
         <div class="container">
             <div class="row">
                 {% for product in products %}
