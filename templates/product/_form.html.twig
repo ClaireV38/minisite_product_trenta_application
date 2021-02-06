@@ -1,5 +1,10 @@
 {{ form_start(form) }}
-    {{ form_row(form.title {'label' : 'Titre'}) }}
-    {{ form_row(form.price {'label' : 'Prix'}) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_row(form.title, {'label': 'Titre'}) }}
+    {{ form_row(form.price, {'label': 'Prix'}) }}
+    {{ form_row(form.availableSize, {'label': 'Tailles disponibles'}) }}
+    {{ form_row(form.availableColor, {'label': 'Couleurs disponibles'}) }}
+    {{ form_row(form.description, {'label': 'Description'}) }}
+    {{ form_row(form.category, {'label': 'Catégorie'}) }}
+    {{ form_row(form.pictureFile, {'label': 'Telecharger une photo du produit'}) }}
+    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

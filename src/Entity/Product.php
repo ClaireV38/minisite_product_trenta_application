@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Entity\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -27,6 +29,8 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Il vous faut entrer un titre")
+     * @Assert\Length(max="100", maxMessage="L'intitulé ne doit pas faire plus de 100 caractères")
      */
     private $title;
 
@@ -43,16 +47,24 @@ class Product
     /**
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
      * @var File
+     * @Assert\File(
+     * maxSize="2M",
+     * maxSizeMessage="Le fichier excède 2Mo.",
+     * mimeTypes={"image/png", "image/jpeg", "image/jpg"},
+     * mimeTypesMessage= "formats autorisés: png, jpeg, jpg"
+     * )
      */
     private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100", maxMessage="L'intitulé ne doit pas faire plus de 100 caractères")
      */
     private $availableSize;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100", maxMessage="L'intitulé ne doit pas faire plus de 100 caractères")
      */
     private $availableColor;
 
@@ -187,6 +199,9 @@ class Product
     public function setPictureFile(File $picture = null):Product
     {
         $this->pictureFile = $picture;
+        if ($picture) {
+            $this->updatedAt = new DateTime('now');
+        }
         return $this;
     }
 
