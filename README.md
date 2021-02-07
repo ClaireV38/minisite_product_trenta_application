@@ -5,15 +5,16 @@
 "Street Style" is a symfony small project that displays a list of products on the home page
 
 simple user has possibility to :
-- see alls products displayed on small cards on the homepage
-- filter them by category
-- see users reviews at the bottom of the page
-- click on each card to see product details
+- see all products displayed on small cards on the homepage
+- filter products by category
+- see users' comments at the bottom of the page
+- click on each card to see product details 
 
 admin has the possibility to :
 - login by entring /admin after the url of the site into his web browser's address bar
-- when connected, see a list of all product
-- add, edit and delect products
+- when connected, see a list of all products
+- add, edit and delete products (with photo upload)
+- logout
 
 ## Installation
 

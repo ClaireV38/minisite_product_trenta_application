@@ -4,11 +4,11 @@
     <div class="container h-100 d-flex flex-column justify-content-center mt-2 mb-2">
         <div class="jumbotron p-md-3 mt-md-4">
             <h1 class="text-center">{{ product.title }}</h1>
-            <img src="{{ vich_uploader_asset(product, 'pictureFile') }}" class="product-detail"
+            <img src="{{ vich_uploader_asset(product, 'pictureFile') }}" class="product-detail-img"
                  alt="{{ product.picture }}">
             <hr class="my-4">
             <p class="text-center">{{ product.description }}</p>
-            <table class="table">
+            <table class="table product-detail">
                 <tbody>
                 <tr>
                     <th>Catégorie</th>

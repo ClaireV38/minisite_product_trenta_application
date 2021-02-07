@@ -8,10 +8,10 @@
         <h2 class="text-center w-75 m-auto">Découvrez nos produits</h2>
         <div class="container">
             <div class="row d-flex flex-row justify-content-center">
-                <div class="filter-form bg-light p-2 p-5">
+                <div class="filter-form p-2 p-5">
                     {{ form_start(form) }}
                     {{ form_row(form.category, {'label': 'Filtrer :'}) }}
-                    <button class="btn btn-primary">Appliquer</button>
+                    <button class="btn btn-primary mt-2">Appliquer</button>
                     {{ form_end(form) }}
                 </div>
             </div>
@@ -19,14 +19,14 @@
         <div class="container">
             <div class="row">
                 {% for product in products %}
-                    <div class="col-md-4 mb-2 p-2">
+                    <div class="col-md-4 mb-3 p-2">
                         <a class="card w-100 h-100 product-card" href="{{ path('product_show',{id: product.id}) }}">
                             <img src="{{ vich_uploader_asset(product, 'pictureFile') }}"
                                  class="card-img-top p-2 picture-card"
                                  alt="{{ product.picture }}">
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ product.title }}</h5>
-                                <p class="card-text">prix : {{ product.price|number_format(2, ',', ' ') }} €</p>
+                                <p class="card-text text-center">prix : {{ product.price|number_format(2, ',', ' ') }} €</p>
                             </div>
                         </a>
                     </div>
