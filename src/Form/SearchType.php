@@ -20,6 +20,7 @@ class SearchType extends AbstractType
                 'class' => Category::class,
                 'expanded' => true,
                 'multiple' => false,
+                'placeholder' => 'Tout voir',
             ])
         ;
     }
