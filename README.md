@@ -7,7 +7,7 @@
 simple user has possibility to :
 - see all products displayed on small cards on the homepage
 - filter products by category
-- see users' comments at the bottom of the page
+- see users' comments at the bottom of the page (fake users from github API)
 - click on each card to see product details 
 
 admin has the possibility to :
