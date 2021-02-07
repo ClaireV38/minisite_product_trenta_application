@@ -4,10 +4,11 @@
 
 {% block body %}
     <div class="container">
-    <h1 class="text-center">Ajouter un produit</h1>
+        <h1 class="text-center">Ajouter un produit</h1>
 
-    {{ include('product/_form.html.twig') }}
-
-    <a class="btn btn-primary" href="{{ path('product_index') }}">retour</a>
+        {{ include('product/_form.html.twig') }}
+        <div class="d-flex flex-row justify-content-center mt-3">
+            <a class="btn btn-primary" href="{{ path('product_index') }}">retour</a>
+        </div>
     </div>
 {% endblock %}

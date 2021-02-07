@@ -19,7 +19,7 @@
                                  alt="{{ product.picture }}">
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ product.title }}</h5>
-                                <p class="card-text">prix : {{ product.price }} €</p>
+                                <p class="card-text">prix : {{ product.price|number_format(2, ',', ' ') }} €</p>
                             </div>
                         </a>
                     </div>

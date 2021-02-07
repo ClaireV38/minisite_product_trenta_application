@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product")
+ * @Route("/produit")
  */
 class ProductController extends AbstractController
 {
@@ -28,7 +28,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="product_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="product_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
@@ -40,6 +40,10 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
+            $product->setCreatedAt(new \DateTime('now'));
+            $entityManager->flush();
+            $this->addFlash('success', 'L\'article a bien été ajouté');
+
             $entityManager->flush();
 
             return $this->redirectToRoute('product_index');
@@ -62,7 +66,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
+     * @Route("/{id}/editer", name="product_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Product $product): Response
@@ -72,6 +76,7 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'L\'article a bien été édité');
 
             return $this->redirectToRoute('product_index');
         }
@@ -91,6 +96,7 @@ class ProductController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
+            $this->addFlash('warning', 'L\'article a bien été supprimé');
             $entityManager->flush();
         }
 

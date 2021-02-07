@@ -36,6 +36,7 @@ class Product
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Assert\GreaterThanOrEqual(message="le prix doit être supérieur ou égal à zero", value = 0)
      */
     private $price;
 
