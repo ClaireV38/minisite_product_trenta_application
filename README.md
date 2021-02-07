@@ -1,6 +1,6 @@
 # minisite_products_trenta_application
 
-# ![Logo Site](assets/images/faviconReadme.png) Street Style
+# ![Logo Site](assets/images/logo.png) Street Style
 
 "Street Style" is a symfony small project that displays a list of products on the home page
 
