@@ -35,20 +35,23 @@
         </div>
     </section>
     <section>
-        <div class="row">
-            {% for user in users %}
-                <div class="card col-md-4">
-                    <img src="{{ user.avatar_url }}" class="card-img-top" alt="{{ user.login }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.login }}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h2 class="text-center">Découvrez l'avis de nos utilisateurs</h2>
+        <div class="container">
+            <div class="row">
+                {% for key, user in users %}
+                    <div class="col-md-4 mb-2 p-2">
+                        <div class="card w-100 h-100 product-card">
+                            <img src="{{ user.avatar_url }}"
+                                 class="card-img-top p-2 picture-card"
+                                 alt="{{ user.login }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ user.login }}</h5>
+                                <p class="card-text text-center">{{ quotes[key].quote }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 {% endblock %}

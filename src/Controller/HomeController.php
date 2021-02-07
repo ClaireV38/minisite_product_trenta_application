@@ -32,22 +32,27 @@ class HomeController extends AbstractController
         $searchForm = $this->createForm(SearchType::class, $data);
         $searchForm->handleRequest($request);
 
-        $response = $client->request(
-            'GET',
-            'https://api.github.com/users',[
-                'query' => ['maxResults' => 3
-                    ]
-        ]
-        );
         if ($data->category) {
             $products = $productRepository->findBy(['category' => $data->category], ['createdAt' => 'DESC'],);
         } else {
             $products = $productRepository->findBy([], ['createdAt' => 'DESC'], );
         }
-        $allUsers = $response->toArray();
-        $firstUsers = array_slice($allUsers, 0 ,3);
+
+        $usersResponse = $client->request(
+            'GET',
+            'https://api.github.com/users?'
+        );
+        $allUsers = $usersResponse->toArray();
+        $first3Users = array_slice($allUsers,0,3);
+
+        $quotesResponse = $client->request(
+                'GET',
+                'https://simpsons-quotes-api.herokuapp.com/quotes?count=3'
+        );
+        $quotes = $quotesResponse->toArray();
         return $this->render('home/index.html.twig', [
-            'users' => $firstUsers,
+            'users' => $first3Users,
+            'quotes' => $quotes,
             'products' => $products,
             'form' => $searchForm->createView(),
         ]);
