@@ -11,7 +11,7 @@ simple user has possibility to :
 - click on each card to see product details 
 
 admin has the possibility to :
-- login by entring /admin after the url of the site into his web browser's address bar
+- login by entring "/admin" after the url of the site into his web browser's address bar
 - when connected, see a list of all products
 - add, edit and delete products (with photo upload)
 - logout
