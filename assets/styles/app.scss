@@ -44,10 +44,8 @@ a:hover {
 }
 
 .filter-form {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0.5em;
     border-radius: 6px;
+    height: fit-content;
 }
 
 /* product detail */
@@ -58,5 +56,12 @@ a:hover {
     margin: auto;
 }
 
+@media (min-width: 1550px) {
 
-
+    .filter-form {
+        position: fixed;
+        z-index: 1;
+        left: 3px;
+        top: 200px;
+    }
+}

@@ -3,19 +3,26 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <section class="d-flex flex-row">
-        <div class="filter-form bg-light h-100 p-2 p-md-5 m-1 mt-2 text-center">
-        {{ form_start(form) }}
-        {{ form_row(form.category, {'label': 'Filtrer :'})}}
-        <button class="btn btn-primary">Appliquer</button>
-        {{ form_end(form) }}
+    <h1 class="text-center">Bienvenue sur Street Style</h1>
+    <section>
+        <h2 class="text-center">Découvrez nos produits</h2>
+        <div class="container">
+            <div class="row d-flex flex-row justify-content-center">
+                <div class="filter-form bg-light p-2 p-5">
+                    {{ form_start(form) }}
+                    {{ form_row(form.category, {'label': 'Filtrer :'}) }}
+                    <button class="btn btn-primary">Appliquer</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class="row">
                 {% for product in products %}
                     <div class="col-md-4 mb-2 p-2">
                         <a class="card w-100 h-100 product-card" href="{{ path('product_show',{id: product.id}) }}">
-                            <img src="{{ vich_uploader_asset(product, 'pictureFile') }}" class="card-img-top p-2 picture-card"
+                            <img src="{{ vich_uploader_asset(product, 'pictureFile') }}"
+                                 class="card-img-top p-2 picture-card"
                                  alt="{{ product.picture }}">
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ product.title }}</h5>
@@ -25,22 +32,23 @@
                     </div>
                 {% endfor %}
             </div>
+        </div>
     </section>
     <section>
-            <div class="row">
-                {% for user in users %}
-                    <div class="card col-md-4">
-                        <img src="{{ user.avatar_url }}" class="card-img-top" alt="{{ user.login }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ user.login }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the
-                                card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+        <div class="row">
+            {% for user in users %}
+                <div class="card col-md-4">
+                    <img src="{{ user.avatar_url }}" class="card-img-top" alt="{{ user.login }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.login }}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of the
+                            card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
+        </div>
         </div>
     </section>
 {% endblock %}
