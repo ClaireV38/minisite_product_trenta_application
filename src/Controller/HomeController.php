@@ -34,16 +34,20 @@ class HomeController extends AbstractController
 
         $response = $client->request(
             'GET',
-            'https://api.github.com/users'
+            'https://api.github.com/users',[
+                'query' => ['maxResults' => 3
+                    ]
+        ]
         );
         if ($data->category) {
-            $products = $productRepository->findBy(['category' => $data->category], ['createdAt' => 'DESC']);
+            $products = $productRepository->findBy(['category' => $data->category], ['createdAt' => 'DESC'],);
         } else {
-            $products = $productRepository->findBy([], ['createdAt' => 'DESC']);
+            $products = $productRepository->findBy([], ['createdAt' => 'DESC'], );
         }
-        $users = $response->toArray();
+        $allUsers = $response->toArray();
+        $firstUsers = array_slice($allUsers, 0 ,3);
         return $this->render('home/index.html.twig', [
-            'users' => $users,
+            'users' => $firstUsers,
             'products' => $products,
             'form' => $searchForm->createView(),
         ]);
